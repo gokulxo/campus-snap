@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>New Post</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="student_name" placeholder="Your name" required><br>
+        <select name="department" required>
+            {% for d in departments %}
+            <option value="{{ d }}">{{ d }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="file" name="image" required><br>
+        <input type="text" name="caption" placeholder="Write a caption..."><br>
+        <button type="submit">Post</button>
+    </form>
+</body>
+</html>

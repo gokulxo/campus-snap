@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CampusSnap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🎓 CampusSnap</h1>
+    <a href="/upload">+ New Post</a>
+
+    <div class="filter">
+        <a href="/?dept=All">All</a>
+        {% for d in departments %}
+            <a href="/?dept={{ d }}" class="{{ 'active' if selected == d }}">{{ d }}</a>
+        {% endfor %}
+    </div>
+
+    {% for post in posts %}
+    <div class="post">
+        <img src="{{ url_for('static', filename='uploads/' + post.image) }}" width="300">
+        <p><b>{{ post.student_name }}</b> · <span class="dept">{{ post.department }}</span></p>
+        <p>{{ post.caption }}</p>
+        <a href="/like/{{ post.id }}">❤️ {{ post.likes }}</a>
+    </div>
+    {% endfor %}
+</body>
+</html>
